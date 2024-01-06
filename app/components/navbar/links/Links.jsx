@@ -1,5 +1,9 @@
-import Link from 'next/link'
-import React from 'react'
+
+import styles from './links.module.css'
+import React, { useState } from 'react'
+import NavLink from './navLink/navLink'
+
+
 
 const Links = () => {
     const links = [
@@ -20,11 +24,29 @@ const Links = () => {
             path: "/blog"
         },
     ]
+    // TEMPORARY 
+    const session = true;
+    const isAdmin = true;
+const [open ,setOpen]= useState(false)
     return (
-        <div>
+        <div className={styles.links}>
             {links.map((link,index) =>(
-                <Link key={index} href={link.path}> {link.title}</Link>
+           
+                  <NavLink key={index} item={link}></NavLink>
+              
+             
+
             ))}
+            {session?
+            (isAdmin && (
+                <>
+                <NavLink item={{title:"Admin",path:"/admin"}}/>
+                <button className={styles.logout}>Logout</button>
+                </>
+                
+            )):
+             (<NavLink item={{title: "Login",path: "/login"}}/>)
+            }
         </div>
     )
 }
