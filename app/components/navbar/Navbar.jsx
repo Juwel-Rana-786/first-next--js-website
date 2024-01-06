@@ -1,8 +1,12 @@
 import React from 'react'
+import Links from './links/Links'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div>
+        <div>Logo</div>
+        <Links/>
+    </div>
   )
 }
 
